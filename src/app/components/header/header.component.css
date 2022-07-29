@@ -1,0 +1,10 @@
+.mr-auto, .mx-auto {
+    margin-right: 0 !important;
+}
+.controller {
+    position: absolute;
+    right: 0;
+}
+.controller button {
+    margin-right: 5px;
+}

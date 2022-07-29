@@ -1,0 +1,59 @@
+<form action="" [formGroup]="studentForm" (ngSubmit)="onAdd()"> 
+
+  <div  formGroupName="student">
+    <div  class="alert alert-danger mx-2" *ngIf="errorMessage"> {{ errorMessage }}</div>
+
+    <div class="input-group flex-nowrap ipu">
+      <div class="input-group-prepend">
+      </div>
+      <input  type="text" formControlName="fullName" class="form-control" placeholder="fullName" aria-label="Username" aria-describedby="addon-wrapping">
+    </div>
+    <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)" class="valid">
+      <div *ngIf="fullName.errors?.['required'] || fullName.errors?.['elimaneSpace']" class="alert alert-danger"> fullName required  </div>
+      <div *ngIf="!fullName.errors?.['elimaneSpace'] && fullName.errors?.['minlength']" class="alert alert-danger"> fullName must be more than 5 digts </div>
+    </div>
+
+    <div class="input-group flex-nowrap ipu">
+      <div class="input-group-prepend">
+      </div>
+      <input type="text" formControlName="age" class="form-control" placeholder="Age" aria-label="Password" aria-describedby="addon-wrapping">
+    </div>
+    <div *ngIf=" age.invalid && (age.dirty ||  age.touched)" class="valid">
+      <div *ngIf="age.errors?.['required'] ||  age.errors?.['elimaneSpace']" class="alert alert-danger">  age required  </div>
+      <div *ngIf="!age.errors?.['elimaneSpace'] &&  age.errors?.['maxlength']" class="alert alert-danger">  age must be  2 digts </div>
+      <div *ngIf="age.errors?.['pattern']" class="alert alert-danger"> age must be  just  numbers </div>
+    </div>
+
+    <div class="input-group flex-nowrap ipu">
+      <div class="input-group-prepend">
+      </div>
+      <input  type="text" formControlName="phone" class="form-control" placeholder="phone" aria-label="phone" aria-describedby="addon-wrapping">
+    </div> 
+    <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="valid">
+      <div *ngIf="phone.errors?.['required'] ||  phone.errors?.['elimaneSpace']" class="alert alert-danger">  phone required  </div>
+      <div *ngIf="!phone.errors?.['elimaneSpace'] &&  phone.errors?.['maxlength']" class="alert alert-danger">  phone must be  11 digts </div>
+      <div *ngIf="phone.errors?.['pattern']" class="alert alert-danger"> phone must be just  numbers </div>
+    </div>
+
+
+    <div class="input-group flex-nowrap ipu">
+      <div class="input-group-prepend">
+      </div>
+      <input  type="text" formControlName="address" class="form-control" placeholder="Address" aria-label="Address" aria-describedby="addon-wrapping">
+    </div>
+    <div *ngIf="address.invalid && (address.dirty || address.touched)" class="valid">
+      <div *ngIf="address.errors?.['required'] || address.errors?.['elimaneSpace']" class="alert alert-danger"> fullName required  </div>
+    </div>
+
+
+    <select formControlName="gender" class="form-select" aria-label="Default select example">
+      <option value="MALE">MALE</option>
+      <option value="FEMALE">FEMALE</option>
+    </select>
+    
+
+  </div> 
+    <div>
+    <button class="btn btn-primary"> Add</button>
+  </div> 
+</form>

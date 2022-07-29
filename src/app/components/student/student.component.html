@@ -1,0 +1,37 @@
+<div class="alert alert-success" *ngIf="message"> {{message }}</div>
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">FulltName</th>
+        <th scope="col">phone number</th>
+        <th scope="col">gender</th>
+        <th scope="col">age</th>
+        <th scope="col">address</th>
+        <th scope="col" > options</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="students?.length > 0">
+     
+      <tr *ngFor="let s of students">
+        <th scope="row">{{ s.id }}</th>
+        <td> {{ s.fullName}} </td>
+        <td> {{s.phone }} </td>
+        <td>{{s.gender}}</td>
+        <td>{{s.age}}</td>
+        <td>{{s.address}}</td>
+        <td>
+            <button class="btn btn-success mx-1" routerLink="/options/{{s.id}}"> Edit</button>
+            <button (click)="deleteStudent(s.id)" class="btn btn-danger"> Delete</button>
+        </td>
+      </tr>
+    </tbody> 
+  </table> 
+
+  <div *ngIf="students?.length == 0" class="alert alert-danger"> non student found with the given name</div> 
+  <ngb-pagination
+  [(page)]="page"
+  [pageSize]="size"
+  [collectionSize]="elemSize"
+  (pageChange)="onPageChange()"></ngb-pagination>
+  <button class="btn btn-primary mx-1"  routerLink="/option"> Add</button>

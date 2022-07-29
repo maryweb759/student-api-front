@@ -1,0 +1,31 @@
+<form action="" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="alert alert-danger mx-2" *ngIf="validationResult"> {{ validationResult }}</div>
+  <div formGroupName="admin">
+    <div class="input-group flex-nowrap ipu">
+      <div class="input-group-prepend">
+      </div> 
+      <input  type="text" formControlName="userName"  class="form-control " placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+    
+     </div> 
+     <div *ngIf="username.invalid && (username.dirty || username.touched)" class="valid">
+      <div *ngIf="username.errors?.['required'] || username.errors?.['elimaneSpace']" class="alert alert-danger">UserName required  </div>
+      <div *ngIf="!username.errors?.['elimaneSpace'] && username.errors?.['minlength']" class="alert alert-danger">UserName must be more than 5 digts </div>
+
+    </div>
+    
+    <div class="input-group flex-nowrap ipu">
+      <div class="input-group-prepend">
+      </div>
+      <input type="password" formControlName="password" class="form-control" placeholder="Password" aria-label="Password"  aria-describedby="addon-wrapping">
+     
+    </div>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="valid">
+      <div *ngIf="password.errors?.['required']" class="alert alert-danger">password required  </div>
+      <div *ngIf="password.errors?.['minlength']" class="alert alert-danger">password must be more than 5 digts </div>
+
+     </div>
+  </div>
+  <div>
+    <button class="btn btn-primary"> Log In</button>
+  </div> 
+</form>
